@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280, initial-scale=1">
+<title>EMBER DUEL — Duel Kartu Elemen</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="brand"><span class="flame-dot"></span>EMBER DUEL</div>
+    <div class="lifebar" id="life-you-wrap">
+      <span class="life-label">KAMU</span>
+      <div class="life-track"><div class="life-fill you" id="life-you-fill"></div></div>
+      <span class="life-num" id="life-you-num">20</span>
+    </div>
+    <div class="round-badge" id="round-badge">RONDE 1</div>
+    <div class="lifebar" id="life-foe-wrap">
+      <span class="life-num" id="life-foe-num">20</span>
+      <div class="life-track"><div class="life-fill foe" id="life-foe-fill"></div></div>
+      <span class="life-label">ROOK</span>
+    </div>
+    <div class="score-box">SKOR <b id="score-num">0</b></div>
+    <div class="mana-box">MANA <b id="mana-num">3</b></div>
+    <button id="mute-btn" type="button" title="Suara (M)">SUARA: ON</button>
+  </header>
+
+  <div id="middle">
+    <main id="table">
+      <section id="foe-zone">
+        <div class="zone-label"><span class="foe-tag">ROOK — SANG PENJAGA BATU</span><span id="foe-hand-count"></span></div>
+        <div class="hand foe-hand" id="foe-hand"></div>
+      </section>
+      <section id="arena">
+        <div class="played-slot" id="slot-you"><span class="slot-hint">Kartumu</span></div>
+        <div id="vs-badge">VS</div>
+        <div class="played-slot" id="slot-foe"><span class="slot-hint">Kartu Rook</span></div>
+        <div id="round-banner"></div>
+      </section>
+      <section id="you-zone">
+        <div class="zone-label"><span class="you-tag">TANGANMU — klik kartu lalu MAIN</span><span id="you-hand-count"></span></div>
+        <div class="hand you-hand" id="you-hand"></div>
+      </section>
+    </main>
+
+    <aside id="side">
+      <div class="side-block">
+        <div class="side-title">DECK &amp; DISCARD</div>
+        <div class="deck-row"><span>Deck</span><b id="deck-num">18</b></div>
+        <div class="deck-row"><span>Discard</span><b id="discard-num">0</b></div>
+        <div class="deck-row"><span>Ronde menang</span><b id="wins-num">0 – 0</b></div>
+      </div>
+      <div class="side-block">
+        <div class="side-title">SIKLUS ELEMEN</div>
+        <div class="cycle">Ember &gt; Thorn &gt; Tide &gt; Stone &gt; Ember</div>
+        <div class="cycle-note">Menang elemen: +3 power. Seri elemen: tanpa bonus.</div>
+      </div>
+      <div class="side-block log-block">
+        <div class="side-title">LOG RONDE</div>
+        <ol id="round-log"></ol>
+      </div>
+      <div class="side-block">
+        <div class="side-title">TAKTIK ROOK</div>
+        <div id="ai-hint">Rook membaca suit yang sering kau mainkan.</div>
+      </div>
+    </aside>
+  </div>
+
+  <footer id="controls">
+    <button id="play-btn" type="button" disabled>MAIN — Enter</button>
+    <span class="keys-hint">1–5 pilih kartu &nbsp;•&nbsp; Enter mainkan &nbsp;•&nbsp; M suara &nbsp;•&nbsp; N ronde baru</span>
+    <span class="tagline">Duel kartu elemen orisinal — tanpa network, tanpa kartu komersial.</span>
+  </footer>
+
+  <div id="title-screen" class="overlay">
+    <div class="title-inner">
+      <div class="title-flame"><span class="shape suit-ember"></span></div>
+      <h1>EMBER DUEL</h1>
+      <p class="subtitle">Duel kartu elemen melawan Rook, Sang Penjaga Batu</p>
+      <p class="rules-short">Mainkan 1 kartu tiap ronde. Power + bonus elemen lawan menentukan damage.
+      Kalahkan life Rook (20) sebelum lifemu habis. Kartu Shield menahan damage, Draw ambil kartu, Double gandakan power.</p>
+      <button id="start-btn" type="button">MULAI DUEL</button>
+      <p class="title-foot">Keyboard: 1–5 pilih kartu, Enter mainkan, M mute</p>
+    </div>
+  </div>
+
+  <div id="end-screen" class="overlay hidden">
+    <div class="end-inner">
+      <h1 id="end-title">MENANG</h1>
+      <p id="end-sub"></p>
+      <p class="end-score">SKOR AKHIR <b id="end-score">0</b></p>
+      <button id="again-btn" type="button">MAIN LAGI (N)</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
